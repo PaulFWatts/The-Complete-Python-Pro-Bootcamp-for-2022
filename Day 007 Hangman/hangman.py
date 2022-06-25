@@ -1,7 +1,6 @@
 """ Hangman game """
 
 import random
-from os import system
 
 from hangman_art import logo, stages
 from hangman_words import word_list
@@ -20,11 +19,7 @@ for _ in range(word_length):
 while not game_is_finished:
     guess = input("Guess a letter: ").lower()
 
-    # Clear the output between guesses. "clear" for Linix and "cls" for Windows.
-    if system == "Linux":
-        system("clear")
-    else:
-        system("cls")
+    print("\033[2J\033[1;1H")  # Clear the output between guesses
 
     if guess in display:
         print(f"You've already guessed {guess}")
@@ -40,10 +35,12 @@ while not game_is_finished:
         lives -= 1
         if lives == 0:
             game_is_finished = True
-            print("You lose.")
+            print("*** You lose *** The word was: " + chosen_word)
 
     if not "_" in display:
         game_is_finished = True
-        print("You win.")
+        print("*** You win ***")
 
     print(stages[lives])
+
+print(input("\nThanks for playing! Press enter to exit."))
