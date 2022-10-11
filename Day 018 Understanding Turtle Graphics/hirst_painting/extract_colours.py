@@ -17,7 +17,7 @@ for color in colors:
 print(rgb_colors)
 
 # Copy the printed colours and remove the colours that are close to white
-# Then copy color_list into main.py
+# Then copy color_list into list_comprehension.py
 color_list = [
     (139, 164, 183),
     (21, 118, 177),
